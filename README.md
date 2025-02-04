@@ -144,8 +144,8 @@ $$
 ### 6. Ruido Añadido y Cálculo de SNR
 #### 6.1. Ruido Gaussiano
 ```python
-ruido = np.random.normal(0, 0.1, t)
-señal_ruidosa = señal + ruido
+ruido = np.random.normal(0, 0.04, t) 
+señal_ruidosa = señal + ruido 
 ```
 Se añade ruido con distribución normal (\( \mathcal{N}(0, 0.1) \)).
 
