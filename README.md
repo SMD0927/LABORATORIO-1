@@ -165,16 +165,21 @@ Se simulan artefactos con alta desviación estándar (\( 5\sigma \)).
 
 #### Cálculo del SNR
 ```python
-def snr_gaussiano(s, r):
-    snr = 10 * np.log10(np.mean(s**2) / np.mean(r**2))
-    return snr
-
-print('SNR con ruido gaussiano:', round(snr_gaussiano(señal, ruido), 3), 'dB')
+def snr(s,r):
+    potencia_señal = np.mean(s**2)
+    potencia_ruido = np.mean(r**2)
+    
+    if potencia_ruido == 0:
+        return np.inf
+    snr = 10 * np.log10(potencia_señal/potencia_ruido) 
+    return snr 
 ```
 Relación señal-ruido:
-\[
+
+$$
 SNR = 10 \cdot \log_{10} \left( \frac{P_{señal}}{P_{ruido}} \right)
-\]
+$$
+
 
 ---
 
