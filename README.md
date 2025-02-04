@@ -94,9 +94,12 @@ Cálculo manual de:
 - **Desviación Estándar (σ):** Mide la dispersión de los valores respecto a la media.
 - **Coeficiente de Variación (CV):** Relaciona la desviación estándar con la media.
 
+$$
 \mu = \frac{\sum x_i}{n}, \quad
 \sigma = \sqrt{\frac{\sum (x_i - \mu)^2}{n-1}}, \quad
 CV = \frac{\sigma}{\mu}
+$$
+
 
 
 #### 4.2. Usando Funciones de NumPy
