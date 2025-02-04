@@ -1,6 +1,6 @@
 # LABORATORIO-1
-Análisis Estaditico De La Señal
-# Análisis Estadístico de Señales Fisiológicas
+Análisis Estadístico de Señales Fisiológicas
+# Análisis Estaditico De La Señal
 
 Este proyecto realiza un análisis estadístico y de ruido sobre una señal fisiológica (ECG) utilizando Python. A continuación, se detalla cada sección del código con explicaciones detalladas y fórmulas utilizadas.
 
