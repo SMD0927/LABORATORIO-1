@@ -133,9 +133,9 @@ def calcular_funcion_probabilidad(senal):
 calcular_funcion_probabilidad(señal)
 ```
 Se calcula la probabilidad de ocurrencia de cada valor único en la señal, lo que permite crear una distribución discreta:
-$$\[
+$$
 P(v) = \frac{\text{Frecuencia Absoluta de } v}{\text{Total de Valores}}
-\]$$
+$$
 
 ---
 
