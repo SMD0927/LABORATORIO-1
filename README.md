@@ -135,7 +135,7 @@ calcular_funcion_probabilidad(señal)
 Se calcula la probabilidad de ocurrencia de cada valor único en la señal, lo que permite crear una distribución discreta:
 
 $$
-P(v) = \frac{\text{Frecuencia Absoluta de } v}{\text{Total de Valores}}
+P(v) = \frac{\text{Frecuencia Absoluta de cada valor } }{\text{Total de Valores}}
 $$
 
 
