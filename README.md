@@ -1,3 +1,3 @@
 # LABORATORIO-1
-Análisis estadístico
+Análisis Estaditico De La Señal
 ggg
