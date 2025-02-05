@@ -28,7 +28,7 @@ datos = wfdb.rdrecord('rec_2')
 t = 2000
 señal = datos.p_signal[:t, 0]
 ```
-Se utiliza `wfdb.rdrecord` para cargar una señal fisiológica (ECG) desde un archivo estándar en formato WFDB. En este caso, se seleccionan los primeros 900 puntos de la señal. Este paso inicial permite trabajar con un subconjunto significativo de datos para realizar análisis detallados.
+Se utiliza `wfdb.rdrecord` para cargar una señal fisiológica (ECG) desde un archivo estándar en formato WFDB. En este caso, se seleccionan los primeros 2000 puntos de la señal. Este paso inicial permite trabajar con un subconjunto significativo de datos para realizar análisis detallados.
 
 ---
 
