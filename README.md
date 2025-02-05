@@ -96,6 +96,13 @@ Se calculan los siguientes estadísticos:
 - **Desviación Estándar (σ):** Medida de la dispersión de los datos respecto a la media.
 - **Coeficiente de Variación (CV):** Relación entre desviación estándar y media, expresada en porcentaje.
 
+$$
+\mu = \frac{\sum x_i}{n}, \quad
+\sigma = \sqrt{\frac{\sum (x_i - \mu)^2}{n-1}}, \quad
+CV = \frac{\sigma}{\mu}
+$$
+
+
 **Resultados:**
 - Media: -0.0124
 - Desviación estándar: 0.131
@@ -175,6 +182,10 @@ ruido_artefacto = artefactos * np.random.normal(5 * np.std(señal), 0.5, t)
 Se simulan eventos anómalos de alta amplitud.
 
 #### Cálculo del SNR
+$$
+\text{SNR (dB)} = 10 \cdot \log_{10} \left( \frac{P_{\text{señal}}}{P_{\text{ruido}}} \right)
+$$
+
 ```python
 def snr_gaussiano(s, r):
     snr = 10 * np.log10(np.mean(s**2) / np.mean(r**2))
