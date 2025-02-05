@@ -137,6 +137,10 @@ def calcular_funcion_probabilidad(senal):
 
 calcular_funcion_probabilidad(señal)
 ```
+$$
+P(v) = \frac{\text{Frecuencia Absoluta de } v}{\text{Total de Valores}}
+$$
+
 Se calcula la probabilidad de ocurrencia de cada valor único en la señal. Esto ayuda a comprender cómo se distribuyen los valores específicos.
 
 **Ejemplo de Resultados:**
