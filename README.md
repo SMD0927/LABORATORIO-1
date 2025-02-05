@@ -44,7 +44,10 @@ plt.xlabel('Datos')
 plt.ylabel('Frecuencia')
 plt.show()
 ```
-[![histograma.png](https://i.postimg.cc/50qyPvY9/histograma.png)](https://postimg.cc/CB5w5Rs9)
+<p align="center">
+    <img src="https://i.postimg.cc/50qyPvY9/histograma.png" alt="histograma" width="600">
+</p>
+
 Se genera un histograma que describe la distribución de los valores de la señal:
 - **Frecuencia Absoluta:** La cantidad de veces que aparecen los valores dentro de cada rango.
 - **Densidad de Probabilidad (KDE):** Representa de forma suavizada cómo se distribuyen los datos.
