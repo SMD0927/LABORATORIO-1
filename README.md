@@ -211,7 +211,7 @@ def snr(s,r):
     snr = 10 * np.log10(potencia_señal/potencia_ruido) 
     return snr
 ```
-**Señaes con Ruido**
+**Señales con Ruido:**
 <p align="center">
     <img src="https://github.com/user-attachments/assets/1f1d2a8e-0e72-49a7-9e39-701a1fda1e9f" alt="image" width="500">
 </p>
@@ -221,7 +221,8 @@ def snr(s,r):
 <p align="center">
     <img src="https://github.com/user-attachments/assets/6ed6d849-933b-41c5-8693-b9a34e554b67" alt="image" width="500">
 </p>
-**Señaes con Ruido Amplificado**
+
+**Señales con Ruido Amplificado:**
 <p align="center">
     <img src="https://github.com/user-attachments/assets/924d3f6d-c0eb-4e05-a678-a451cb81b9d4" alt="image" width="500">
 </p>
@@ -233,7 +234,6 @@ def snr(s,r):
 <p align="center">
     <img src="https://github.com/user-attachments/assets/080b90b3-ae34-447e-b9be-ac5e3a59199f" alt="image" width="500">
 </p>
-
 
 
 
