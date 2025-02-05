@@ -2,7 +2,7 @@
 Análisis Estadístico de Señales Fisiológicas
 # Análisis Estadístico de Señales Fisiológicas
 
-Este proyecto realiza un análisis detallado de una señal fisiológica (ECG) utilizando técnicas estadísticas descriptivas y modelos de ruido, con el objetivo de evaluar características esenciales de la señal y los efectos del ruido en su comportamiento.
+Este proyecto realiza un análisis detallado de una señal fisiológica (ECG) utilizando técnicas estadísticas descriptivas y modelos de ruido, con el objetivo de evaluar características esenciales de la señal y los efectos del ruido en su comportamiento. Se analizan estadísticos básicos, distribuciones de probabilidad y la resistencia de la señal frente a diferentes tipos de ruido, evaluando su relación señal-ruido (SNR).
 
 ## Requisitos
 - **Python 3.9**
@@ -28,7 +28,7 @@ datos = wfdb.rdrecord('rec_2')
 t = 900
 señal = datos.p_signal[:t, 0]
 ```
-Se utiliza `wfdb.rdrecord` para cargar una señal fisiológica (ECG) de 900 puntos, obtenida de un archivo estándar en formato WFDB. Este tipo de señal es común en estudios biomédicos, donde se analiza la actividad eléctrica del corazón.
+Se utiliza `wfdb.rdrecord` para cargar una señal fisiológica (ECG) desde un archivo estándar en formato WFDB. En este caso, se seleccionan los primeros 900 puntos de la señal. Este paso inicial permite trabajar con un subconjunto significativo de datos para realizar análisis detallados.
 
 ---
 
@@ -44,9 +44,12 @@ plt.xlabel('Datos')
 plt.ylabel('Frecuencia')
 plt.show()
 ```
-Se representa la distribución de la señal mediante histogramas. La gráfica muestra:
-- **Frecuencia de los valores**: Observando la concentración de valores.
-- **Densidad de probabilidad (KDE)**: Una curva suavizada que resalta patrones en la distribución.
+Se genera un histograma que describe la distribución de los valores de la señal:
+- **Frecuencia Absoluta:** La cantidad de veces que aparecen los valores dentro de cada rango.
+- **Densidad de Probabilidad (KDE):** Representa de forma suavizada cómo se distribuyen los datos.
+
+**Análisis:**
+El histograma revela que los valores de la señal están centrados alrededor de la media y decrecen hacia los extremos. Esto es típico de señales fisiológicas donde la actividad normal se mantiene en un rango definido.
 
 ---
 
@@ -61,7 +64,12 @@ plt.legend()
 plt.grid()
 plt.show()
 ```
-Se grafica la señal original con etiquetas y leyendas. Esto permite identificar patrones, amplitudes y posibles irregularidades en el tiempo.
+La gráfica muestra la variación de la señal ECG en el tiempo:
+- **Patrones Visuales:** Se pueden observar las ondas características (P, QRS, T) típicas de un ECG.
+- **Amplitud:** Indica la intensidad de las variaciones del voltaje.
+
+**Análisis:**
+Esta gráfica ayuda a identificar irregularidades o anomalías que podrían ser indicativas de problemas cardiacos.
 
 ---
 
@@ -83,15 +91,18 @@ def estadisticos_programados():
 
 estadisticos_programados()
 ```
-Se calculan manualmente:
-- **Media (μ):** Representa el promedio de los valores de la señal.
-- **Desviación Estándar (σ):** Mide la dispersión de los datos respecto a la media.
-- **Coeficiente de Variación (CV):** Relación entre la desviación estándar y la media, útil para datos comparativos.
+Se calculan los siguientes estadísticos:
+- **Media (μ):** Valor promedio de la señal.
+- **Desviación Estándar (σ):** Medida de la dispersión de los datos respecto a la media.
+- **Coeficiente de Variación (CV):** Relación entre desviación estándar y media, expresada en porcentaje.
 
-Resultados típicos:
+**Resultados:**
 - Media: -0.0124
 - Desviación estándar: 0.131
 - Coeficiente de variación: -10.557
+
+**Interpretación:**
+La media cercana a cero indica una señal centrada, mientras que el coeficiente de variación muestra una variabilidad moderada.
 
 #### 4.2. Usando Funciones de NumPy
 ```python
@@ -105,7 +116,9 @@ def estadisticos_Bibliotecas():
 
 estadisticos_Bibliotecas()
 ```
-NumPy permite calcular de manera eficiente los mismos estadísticos:
+Se obtienen los mismos resultados de manera más eficiente utilizando NumPy.
+
+**Resultados:**
 - Media: -0.012
 - Desviación estándar: 0.131
 - Coeficiente de variación: -10.554
@@ -124,12 +137,14 @@ def calcular_funcion_probabilidad(senal):
 
 calcular_funcion_probabilidad(señal)
 ```
-Se evalúa la frecuencia relativa de cada valor único en la señal:
-- Ejemplo:
-  - Valor: -0.28000, Probabilidad: 0.00050
-  - Valor: 0.00000, Probabilidad: 0.01650
+Se calcula la probabilidad de ocurrencia de cada valor único en la señal. Esto ayuda a comprender cómo se distribuyen los valores específicos.
 
-Esto facilita el análisis de patrones específicos en los datos.
+**Ejemplo de Resultados:**
+- Valor: -0.28000, Probabilidad: 0.00050
+- Valor: 0.00000, Probabilidad: 0.01650
+
+**Análisis:**
+La mayoría de los valores tienen baja probabilidad individual, lo que refleja la variabilidad natural de la señal.
 
 ---
 
@@ -139,21 +154,21 @@ Esto facilita el análisis de patrones específicos en los datos.
 ruido = np.random.normal(0, 0.1, t)
 señal_ruidosa = señal + ruido
 ```
-Se añade ruido normal (\( \mathcal{N}(0, 0.1) \)) para simular perturbaciones aleatorias.
+Se añade ruido con distribución normal para simular interferencias aleatorias.
 
 #### 6.2. Ruido de Impulso
 ```python
 impulsos = np.random.choice([0, 1], size=t, p=[0.9, 0.1])
 ruido_impulso = impulsos * np.random.uniform(-0.8, 0.8, t)
 ```
-Se introducen impulsos aleatorios, representando eventos transitorios bruscos.
+Se introducen pulsos aleatorios para simular eventos transitorios abruptos.
 
 #### 6.3. Ruido Tipo Artefacto
 ```python
 artefactos = np.random.choice([0, 1], size=t, p=[0.95, 0.05])
 ruido_artefacto = artefactos * np.random.normal(5 * np.std(señal), 0.5, t)
 ```
-Artefactos que simulan eventos de alta amplitud (\( 5\sigma \)).
+Se simulan eventos anómalos de alta amplitud.
 
 #### Cálculo del SNR
 ```python
@@ -163,15 +178,18 @@ def snr_gaussiano(s, r):
 
 print('SNR con ruido gaussiano:', round(snr_gaussiano(señal, ruido), 3), 'dB')
 ```
-Se evalúa la relación señal-ruido (SNR):
+**Resultados SNR:**
 - **Ruido Gaussiano:** 10.369 dB
 - **Ruido Impulso:** 7.09 dB
 - **Ruido Artefacto:** 4.092 dB
 
+**Análisis:**
+El SNR más alto indica que la señal es más resistente al ruido gaussiano en comparación con el ruido de impulso o artefactos.
+
 ---
 
 ### 7. Visualización de Ruido
-Se grafican las señales contaminadas con ruido, permitiendo analizar el impacto visual de cada tipo de perturbación:
+Se grafican las señales contaminadas con ruido:
 ```python
 plt.figure()
 plt.plot(señal, label='Señal original')
@@ -180,10 +198,13 @@ plt.legend()
 plt.show()
 ```
 
+**Análisis Visual:**
+Las gráficas muestran cómo diferentes tipos de ruido afectan la forma de la señal, con el ruido de artefacto generando mayores distorsiones.
+
 ---
 
 ## Resultado Esperado
-- Histogramas y estadísticos descriptivos.
+- Histogramas y estadísticas descriptivas.
 - Distribución de probabilidad de valores.
 - Gráficas de señales con diferentes tipos de ruido.
 - Cálculo de SNR para evaluar la calidad de la señal bajo ruido.
