@@ -44,6 +44,7 @@ plt.xlabel('Datos')
 plt.ylabel('Frecuencia')
 plt.show()
 ```
+[![histograma.png](https://i.postimg.cc/50qyPvY9/histograma.png)](https://postimg.cc/CB5w5Rs9)
 Se genera un histograma que describe la distribución de los valores de la señal:
 - **Frecuencia Absoluta:** La cantidad de veces que aparecen los valores dentro de cada rango.
 - **Densidad de Probabilidad (KDE):** Representa de forma suavizada cómo se distribuyen los datos.
@@ -64,6 +65,11 @@ plt.legend()
 plt.grid()
 plt.show()
 ```
+<p align="center">
+    <img src="https://github.com/user-attachments/assets/d8104ccb-6b13-49c2-b510-abae7d5338f3" alt="image" width="600">
+</p>
+
+
 La gráfica muestra la variación de la señal ECG en el tiempo:
 - **Patrones Visuales:** Se pueden observar las ondas características (P, QRS, T) típicas de un ECG.
 - **Amplitud:** Indica la intensidad de las variaciones del voltaje.
