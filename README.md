@@ -87,18 +87,20 @@ Esta gráfica ayuda a identificar irregularidades o anomalías que podrían ser 
 #### 4.1. Cálculo Manual
 ```python
 def estadisticos_programados():
+    print('estadísticos descriptivos, forma larga;')
     suma = 0
     for v in señal:
-        suma += v    
-    media = suma / t
-    suma2 = sum((u - media)**2 for u in señal)
-    desvesta = (suma2 / (t - 1))**0.5
-    coeficiente = desvesta / media
-    print('media:', media)
-    print("desviacion estandar:", desvesta)
-    print('coeficente de variacion', coeficiente)
-
-estadisticos_programados()
+       suma += v    
+    media = suma/t
+    print('media:', round(media,4))
+    suma2 = 0
+    for u in señal:
+        suma2 += ((u-media)**2)
+    desvesta = (suma2/(t-1))**0.5
+    print("desviacion estadar:", round(desvesta,3))
+    coeficiente = desvesta/media
+    print('coeficente de variacion', abs(round(coeficiente,3)))
+    print()
 ```
 Se calculan los siguientes estadísticos:
 - **Media (μ):** Valor promedio de la señal.
@@ -122,15 +124,14 @@ La media cercana a cero indica una señal centrada, mientras que el coeficiente 
 
 #### 4.2. Usando Funciones de NumPy
 ```python
-def estadisticos_Bibliotecas():
+def estadisticos():
+    print('estadísticos descriptivos, funciones predeterminadas;')
     media = np.mean(señal)
-    desvesta = np.std(señal, ddof=1)
-    coeficiente = desvesta / media
-    print('Media:', media)
-    print("Desviación estándar:", desvesta)
-    print('Coeficiente de variación:', coeficiente)
-
-estadisticos_Bibliotecas()
+    desvesta = np.std(señal)
+    coeficiente = desvesta/media
+    print('media:', round(media,3))
+    print("desviacion estadar:", round(desvesta,3))
+    print('coeficente de variacion',abs(round(coeficiente,3)))
 ```
 Se obtienen los mismos resultados de manera más eficiente utilizando NumPy.
 
