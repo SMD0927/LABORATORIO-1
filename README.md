@@ -276,6 +276,6 @@ Las gráficas muestran cómo diferentes tipos de ruido afectan la forma de la se
 
 ## Instrucciones
 1. Descargar la señal desde bases de datos como PhysioNet.
-2. Ejecutar el código en un entorno Python.
+2. Codificar y Ejecutar el código en un entorno Python.
 3. Subir este análisis a GitHub con el archivo `README.md` y las gráficas generadas como soporte visual.
 
