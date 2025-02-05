@@ -28,7 +28,7 @@ datos = wfdb.rdrecord('rec_2')
 t = 2000
 señal = datos.p_signal[:t, 0]
 ```
-Se utiliza `wfdb.rdrecord` para cargar una señal fisiológica (ECG) desde un archivo estándar en formato WFDB que fueron descargados en PhysioNet. En este caso, se seleccionan los primeros 2000 puntos de la señal. Este paso inicial permite trabajar con un subconjunto significativo de datos para realizar análisis detallados.
+Se utiliza `wfdb.rdrecord` para cargar una señal fisiológica (ECG) desde un archivo estándar en formato WFDB que fueron descargados en PhysioNet. En este caso, se seleccionan los primeros 2000 puntos de la señal. Este paso inicial permite trabajar con un subconjunto significativo de datos para realizar análisis detallados.[1][2]
 
 ---
 
@@ -48,7 +48,7 @@ plt.show()
     <img src="https://i.postimg.cc/50qyPvY9/histograma.png" alt="histograma" width="450">
 </p>
 
-El histograma muestra una distribución asimétrica con mayor concentración de valores cerca de 0 y una cola extendida a la derecha, indicando un sesgo positivo. Esto sugiere la posible presencia de ruido o eventos atípicos en la señal, aunque la mayoría de los valores se mantienen dentro de un rango fisiológico típico.
+El histograma muestra una distribución asimétrica con mayor concentración de valores cerca de 0 y una cola extendida a la derecha, indicando un sesgo positivo. Esto sugiere la posible presencia de ruido o eventos atípicos en la señal, aunque la mayoría de los valores se mantienen dentro de un rango fisiológico típico.[3]
 
 ---
 
@@ -72,7 +72,7 @@ La gráfica muestra la señal ECG en función del tiempo, donde se pueden ver cl
 ---
 
 ### 4. Estadísticos Descriptivos
-En esta sección se calculan estadísticas básicas de la señal de dos formas: de manera manual y usando NumPy. Ambas aproximaciones generan resultados muy similares: una media cercana a cero (-0.0124 o -0.012) lo que coincide con el histograma que revela una concentración de valores alrededor de este punto ,y una desviación estándar de 0.131, lo que indica que la señal está centrada y presenta una dispersión moderada. El coeficiente de variación, cercano a 10.55, lo que refleja una variabilidad relativa en la señal.
+En esta sección se calculan estadísticas básicas de la señal de dos formas: de manera manual y usando NumPy. Ambas aproximaciones generan resultados muy similares: una media cercana a cero (-0.0124 o -0.012) lo que coincide con el histograma que revela una concentración de valores alrededor de este punto ,y una desviación estándar de 0.131, lo que indica que la señal está centrada y presenta una dispersión moderada. El coeficiente de variación, cercano a 10.55, lo que refleja una variabilidad relativa en la señal.[4]
 #### 4.1. Cálculo Manual
 ```python
 def estadisticos_programados():
@@ -129,7 +129,7 @@ Se obtienen los mismos resultados de manera más eficiente utilizando NumPy.
 - Coeficiente de variación: 10.554
 
 ---
-En esta sección se calculan estadísticas básicas de la señal de dos formas: de manera manual y usando NumPy. Ambas aproximaciones generan resultados muy similares: una media cercana a cero (-0.0124 o -0.012) lo que coincide con el histograma que revela una concentración de valores alrededor de este punto ,y una desviación estándar de 0.131, lo que indica que la señal está centrada y presenta una dispersión moderada. El coeficiente de variación, cercano a 10.55, lo que refleja una variabilidad relativa en la señal.
+
 ### 5. Función de Probabilidad
 ```python
 def calcular_funcion_probabilidad(senal):
@@ -146,7 +146,7 @@ $$
 P(v) = \frac{\text{Frecuencia Absoluta de } v}{\text{Total de Valores}}
 $$
 
-Se calcula la probabilidad de ocurrencia de cada valor único en la señal. Esto ayuda a comprender cómo se distribuyen los valores específicos.
+Se calcula la probabilidad de ocurrencia de cada valor único en la señal. Esto ayuda a comprender cómo se distribuyen los valores específicos.[5]
 
 **Ejemplo de Resultados:**
 - Valor: -0.28000, Probabilidad: 0.00050
@@ -163,7 +163,7 @@ La mayoría de los valores tienen baja probabilidad individual, lo que refleja l
 ruido = np.random.normal(0, 0.04, t) 
 señal_ruidosa = señal + ruido 
 ```
-El ruido gaussiano es un tipo de ruido aleatorio cuyas variaciones siguen una distribución normal. Se define por su media (0 en este caso) y su desviación estándar (0.1, que controla su intensidad). Es común en señales fisiológicas debido a la electrónica del sistema de adquisición y otras fuentes de interferencia aleatoria.
+El ruido gaussiano es un tipo de ruido aleatorio cuyas variaciones siguen una distribución normal.[6] Se define por su media (0 en este caso) y su desviación estándar (0.1, que controla su intensidad). Es común en señales fisiológicas debido a la electrónica del sistema de adquisición y otras fuentes de interferencia aleatoria.
 
 #### 6.1. Ruido Gaussiano Amplificado
 ```python
@@ -178,7 +178,7 @@ impulsos = np.random.choice([0, 1], size=len(señal), p=[1-prob_impulso, prob_im
 amplitud_impulso = np.random.choice([-1, 1], size=len(señal)) * 0.2
 ruido2 = impulsos * amplitud_impulso
 ```
-Este ruido se caracteriza por picos abruptos y esporádicos en la señal, generados aquí con una probabilidad del 8% (prob_impulso = 0.08). La función np.random.choice determina en qué puntos aparecen los impulsos (1 o 0), y la amplitud se asigna aleatoriamente con valores de ±0.2. Este ruido suele deberse a interferencias externas o fallos en la transmisión de datos.
+Este ruido se caracteriza por picos abrupto y repentinos en la señal [7], generados aquí con una probabilidad del 8% (prob_impulso = 0.08). La función np.random.choice determina en qué puntos aparecen los impulsos (1 o 0), y la amplitud se asigna aleatoriamente con valores de ±0.2. Este ruido suele deberse a interferencias externas o fallos en la transmisión de datos.
 
 #### 6.2. Ruido de Impulso Amplificado
 ```python
@@ -194,7 +194,7 @@ impul = np.random.choice([0, 1], size=len(señal), p=[1-prob_imp, prob_imp])
 amplitud = np.random.choice([-1, 1], size=len(señal)) * 0.2
 ruido3 = impul * amplitud
 ```
-Este ruido representa alteraciones no deseadas en la señal causadas por errores en la adquisición, como movimientos del paciente o fallos en los electrodos. Es similar al ruido de impulso, pero con una mayor probabilidad de ocurrencia (prob_imp = 0.15). Se genera con la misma lógica de np.random.choice, agregando perturbaciones aleatorias.
+Este ruido representa alteraciones no deseadas en la señal, que no se encuentran presentes en la fuente original si no que se deben a alteraciones externas a dicha fuente[8], como movimientos del paciente o fallos en los electrodos. Es similar al ruido de impulso, pero con una mayor probabilidad de ocurrencia (prob_imp = 0.15). Se genera con la misma lógica de np.random.choice, agregando perturbaciones aleatorias.
 
 #### 6.3. Ruido Tipo Artefacto Amplificado
 ```python
@@ -204,7 +204,7 @@ a = np.random.choice([-1, 1], size=len(señal)) * 0.4
 ruido6 = i * a
 ```
 #### Cálculo del SNR
-El SNR (Relación Señal-Ruido) cuantifica qué tan fuerte es la señal en comparación con el ruido presente. Un valor alto indica una señal clara con poca interferencia, mientras que un valor bajo implica que el ruido domina, dificultando su interpretación. Se calcula como:
+El SNR (Relación Señal-Ruido) cuantifica qué tan fuerte es la señal en comparación con el ruido presente. Un valor alto indica una señal clara con poca interferencia, mientras que un valor bajo implica que el ruido domina, dificultando su interpretación [9]. Se calcula como:
 
 $$
 \text{SNR (dB)} = 10 \cdot \log_{10} \left( \frac{P_{\text{señal}}}{P_{\text{ruido}}} \right)
@@ -281,5 +281,15 @@ Las gráficas muestran cómo diferentes tipos de ruido afectan la forma de la se
 ## Instrucciones
 1. Descargar la señal desde bases de datos como PhysioNet.
 2. Codificar y Ejecutar el código en un entorno Python.
+##Bibliografias
+[1] https://physionet.org/about/database/
+[2] https://wfdb.readthedocs.io/en/latest/
+[3] https://acortar.link/8Ua7sO
+[4] http://ri.uaemex.mx/oca/view/20.500.11799/32031/1/secme-21225.pdf
+[5] http://www.liceobrainstorm.cl/wp-content/uploads/2020/05/3ro-y-4to-medio-Electivo-de-Probabilidad-PPT-n%C2%B0-1-04-al-08-de-Mayo.pdf
+[6] https://es.statisticseasily.com/glossario/what-is-gaussian-noise/
+[7] https://svantek.com/es/servicios/ruido-de-impulso/
+[8] https://www.uned.es/universidad/facultades/dam/jcr:aec2c175-f79e-4478-a0ed-ffec97816b5d/PFM_%20Luis_Alberto_Ramon_Surutusa.pdf
+[9] https://wraycastle.com/es/blogs/knowledge-base/what-does-snr-stand-for?srsltid=AfmBOor-3cFfdYqIcESTfUynthEkfkz5Uz297oMsF_l-1v_Kda3J1Us_
 
 
