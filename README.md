@@ -45,7 +45,7 @@ plt.ylabel('Frecuencia')
 plt.show()
 ```
 <p align="center">
-    <img src="https://i.postimg.cc/50qyPvY9/histograma.png" alt="histograma" width="600">
+    <img src="https://i.postimg.cc/50qyPvY9/histograma.png" alt="histograma" width="450">
 </p>
 
 Se genera un histograma que describe la distribución de los valores de la señal:
