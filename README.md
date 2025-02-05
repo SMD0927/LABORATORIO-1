@@ -281,15 +281,29 @@ Las gráficas muestran cómo diferentes tipos de ruido afectan la forma de la se
 ## Instrucciones
 1. Descargar la señal desde bases de datos como PhysioNet.
 2. Codificar y Ejecutar el código en un entorno Python.
-##Bibliografias
-[1] https://physionet.org/about/database/
+---
+
+## Bibliografías
+[1] https://physionet.org/about/database/ 
+
 [2] https://wfdb.readthedocs.io/en/latest/
+
 [3] https://acortar.link/8Ua7sO
+
 [4] http://ri.uaemex.mx/oca/view/20.500.11799/32031/1/secme-21225.pdf
+
 [5] http://www.liceobrainstorm.cl/wp-content/uploads/2020/05/3ro-y-4to-medio-Electivo-de-Probabilidad-PPT-n%C2%B0-1-04-al-08-de-Mayo.pdf
+
 [6] https://es.statisticseasily.com/glossario/what-is-gaussian-noise/
+
 [7] https://svantek.com/es/servicios/ruido-de-impulso/
+
 [8] https://www.uned.es/universidad/facultades/dam/jcr:aec2c175-f79e-4478-a0ed-ffec97816b5d/PFM_%20Luis_Alberto_Ramon_Surutusa.pdf
+
 [9] https://wraycastle.com/es/blogs/knowledge-base/what-does-snr-stand-for?srsltid=AfmBOor-3cFfdYqIcESTfUynthEkfkz5Uz297oMsF_l-1v_Kda3J1Us_
+
+----
+## Autores 
+Sañuel Peña -Ana Abril- Santiago Mora
 
 
