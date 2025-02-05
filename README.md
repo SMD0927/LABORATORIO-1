@@ -199,9 +199,7 @@ El SNR o la Relación Señal-Ruido es una medida que compara el nivel de la señ
 
 
 $$
-\[
 \text{SNR (dB)} = 10 \cdot \log_{10} \left( \frac{P_{\text{señal}}}{P_{\text{ruido}}} \right)
-\]
 $$
 
 ```python
