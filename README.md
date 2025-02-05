@@ -245,8 +245,7 @@ def snr(s,r):
 - **Ruido Artefacto:** 4.066 dB
 
 **Análisis:**
-El SNR más alto indica que la señal es más resistente al ruido gaussiano en comparación con el ruido de impulso o artefactos.
-
+En las gráficas que presentas, se observa que, al incrementar la amplitud del ruido, el SNR disminuye, lo que implica que la señal se ve cada vez más afectada por el ruido. En las primeras tres gráficas, donde el ruido tiene una amplitud más baja, el SNR es más alto, lo que significa que la señal se puede distinguir con mayor claridad y la distorsión provocada por el ruido es mínima. Por otro lado, en las últimas tres gráficas, donde la amplitud del ruido ha aumentado, el SNR es más bajo, lo que resulta en una mayor interferencia y dificultad para identificar la forma original de la señal. En general, a medida que la amplitud del ruido aumenta sin cambiar la señal, el SNR disminuye, lo que genera una señal más ruidosa y menos legible.
 ---
 
 ### 7. Visualización de Ruido
