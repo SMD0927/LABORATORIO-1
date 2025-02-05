@@ -214,6 +214,14 @@ def snr(s,r):
 <p align="center">
     <img src="https://github.com/user-attachments/assets/1183d8bd-2dd4-40ef-93bb-302e7420e4d9" alt="image" width="600">
 </p>
+<p align="center">
+    <img src="https://github.com/user-attachments/assets/6ed6d849-933b-41c5-8693-b9a34e554b67" alt="image" width="600">
+</p>
+<p align="center">
+    <img src="https://github.com/user-attachments/assets/080b90b3-ae34-447e-b9be-ac5e3a59199f" alt="image" width="600">
+</p>
+
+
 
 
 
