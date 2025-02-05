@@ -174,7 +174,7 @@ La mayoría de los valores tienen baja probabilidad individual, lo que refleja l
 ruido = np.random.normal(0, 0.1, t)
 señal_ruidosa = señal + ruido
 ```
-Se añade ruido con distribución normal para simular interferencias aleatorias.
+Es un tipo de ruido aleatorio cuyas variaciones siguen una distribución normal o gaussiana. Se caracteriza por tener una media de valor cero y una desviación estándar que define su intensidad.
 
 #### 6.2. Ruido de Impulso
 ```python
@@ -183,7 +183,7 @@ impulsos = np.random.choice([0, 1], size=len(señal), p=[1-prob_impulso, prob_im
 amplitud_impulso = np.random.choice([-1, 1], size=len(señal)) * 0.2
 ruido2 = impulsos * amplitud_impulso
 ```
-Se introducen pulsos aleatorios para simular eventos transitorios abruptos.
+Es un tipo de ruido caracterizado por la aparición de picos de alta intensidad en una señal. Estos picos ocurren de manera esporádica y pueden alterar significativamente la información original
 
 #### 6.3. Ruido Tipo Artefacto
 ```python
@@ -192,7 +192,7 @@ impul = np.random.choice([0, 1], size=len(señal), p=[1-prob_imp, prob_imp])
 amplitud = np.random.choice([-1, 1], size=len(señal)) * 0.2
 ruido3 = impul * amplitud
 ```
-Se simulan eventos anómalos de alta amplitud.
+Se refiere a cualquier distorsión no deseada que aparece en una señal debido a errores en su adquisición, procesamiento o transmisión.
 
 #### Cálculo del SNR
 El SNR o la Relación Señal-Ruido es una medida que compara el nivel de la señal útil con el nivel del ruido no deseado. En otras palabras, es una forma de medir qué tan clara es una señal en comparación con el ruido que la acompaña. Un SNR alto significa que la señal es mucho más fuerte que el ruido, lo que generalmente resulta en una mejor calidad de la señal. Por otro lado, un SNR bajo indica que el ruido predomina sobre la señal, lo que puede causar distorsión o errores.
