@@ -160,10 +160,16 @@ La mayoría de los valores tienen baja probabilidad individual, lo que refleja l
 ### 6. Ruido Añadido y Cálculo de SNR
 #### 6.1. Ruido Gaussiano
 ```python
-ruido = np.random.normal(0, 0.1, t)
-señal_ruidosa = señal + ruido
+ruido = np.random.normal(0, 0.04, t) 
+señal_ruidosa = señal + ruido 
 ```
 El ruido gaussiano es un tipo de ruido aleatorio cuyas variaciones siguen una distribución normal. Se define por su media (0 en este caso) y su desviación estándar (0.1, que controla su intensidad). Es común en señales fisiológicas debido a la electrónica del sistema de adquisición y otras fuentes de interferencia aleatoria.
+
+#### 6.1. Ruido Gaussiano Amplificado
+```python
+ruido4 = np.random.normal(0, 0.1, t) 
+señal_ruidosa = señal + ruido4 
+```
 
 #### 6.2. Ruido de Impulso
 ```python
@@ -174,6 +180,13 @@ ruido2 = impulsos * amplitud_impulso
 ```
 Este ruido se caracteriza por picos abruptos y esporádicos en la señal, generados aquí con una probabilidad del 8% (prob_impulso = 0.08). La función np.random.choice determina en qué puntos aparecen los impulsos (1 o 0), y la amplitud se asigna aleatoriamente con valores de ±0.2. Este ruido suele deberse a interferencias externas o fallos en la transmisión de datos.
 
+#### 6.2. Ruido de Impulso Amplificado
+```python
+prob = 0.08
+im = np.random.choice([0, 1], size=len(señal), p=[1-prob, prob])
+am = np.random.choice([-1, 1], size=len(señal)) * 0.4
+ruido5 = im * am
+```
 #### 6.3. Ruido Tipo Artefacto
 ```python
 prob_imp = 0.15
@@ -182,6 +195,14 @@ amplitud = np.random.choice([-1, 1], size=len(señal)) * 0.2
 ruido3 = impul * amplitud
 ```
 Este ruido representa alteraciones no deseadas en la señal causadas por errores en la adquisición, como movimientos del paciente o fallos en los electrodos. Es similar al ruido de impulso, pero con una mayor probabilidad de ocurrencia (prob_imp = 0.15). Se genera con la misma lógica de np.random.choice, agregando perturbaciones aleatorias.
+
+#### 6.3. Ruido Tipo Artefacto
+```python
+p = 0.2
+i = np.random.choice([0, 1], size=len(señal), p=[1-p, p])
+a = np.random.choice([-1, 1], size=len(señal)) * 0.4
+ruido6 = i * a
+```
 #### Cálculo del SNR
 El SNR o la Relación Señal-Ruido es una medida que compara el nivel de la señal útil con el nivel del ruido no deseado. En otras palabras, es una forma de medir qué tan clara es una señal en comparación con el ruido que la acompaña. Un SNR alto significa que la señal es mucho más fuerte que el ruido, lo que generalmente resulta en una mejor calidad de la señal. Por otro lado, un SNR bajo indica que el ruido predomina sobre la señal, lo que puede causar distorsión o errores.
 
