@@ -1,4 +1,4 @@
-# LABORATORIO-1
+# LABORATORIO - 1
 Análisis Estadístico de Señales Fisiológicas
 # Análisis Estadístico de la Señal
 
