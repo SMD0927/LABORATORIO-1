@@ -72,7 +72,7 @@ La gráfica muestra la señal ECG en función del tiempo, donde se pueden ver cl
 ---
 
 ### 4. Estadísticos Descriptivos
-
+En esta sección se calculan estadísticas básicas de la señal de dos formas: de manera manual y usando NumPy. Ambas aproximaciones generan resultados muy similares: una media cercana a cero (-0.0124 o -0.012) lo que coincide con el histograma que revela una concentración de valores alrededor de este punto ,y una desviación estándar de 0.131, lo que indica que la señal está centrada y presenta una dispersión moderada. El coeficiente de variación, cercano a 10.55, lo que refleja una variabilidad relativa en la señal.
 #### 4.1. Cálculo Manual
 ```python
 def estadisticos_programados():
@@ -204,8 +204,7 @@ a = np.random.choice([-1, 1], size=len(señal)) * 0.4
 ruido6 = i * a
 ```
 #### Cálculo del SNR
-El SNR o la Relación Señal-Ruido es una medida que compara el nivel de la señal útil con el nivel del ruido no deseado. En otras palabras, es una forma de medir qué tan clara es una señal en comparación con el ruido que la acompaña. Un SNR alto significa que la señal es mucho más fuerte que el ruido, lo que generalmente resulta en una mejor calidad de la señal. Por otro lado, un SNR bajo indica que el ruido predomina sobre la señal, lo que puede causar distorsión o errores.
-
+El SNR (Relación Señal-Ruido) cuantifica qué tan fuerte es la señal en comparación con el ruido presente. Un valor alto indica una señal clara con poca interferencia, mientras que un valor bajo implica que el ruido domina, dificultando su interpretación. Se calcula como:
 
 $$
 \text{SNR (dB)} = 10 \cdot \log_{10} \left( \frac{P_{\text{señal}}}{P_{\text{ruido}}} \right)
@@ -258,7 +257,7 @@ def snr(s,r):
 - **Ruido Artefacto Amplificado:** -2.51 dB
 
 **Análisis:**
-En las presentes graficas, se observa que, al incrementar la amplitud del ruido, el SNR disminuye, lo que implica que la señal se ve cada vez más afectada por el ruido. En las primeras tres gráficas, donde el ruido tiene una amplitud más baja, el SNR es más alto, lo que significa que la señal se puede distinguir con mayor claridad y la distorsión provocada por el ruido es moderada. Por otro lado, en las últimas tres gráficas, donde la amplitud del ruido ha aumentado, el SNR es más bajo, lo que resulta en una mayor interferencia y dificultad para identificar la forma original de la señal. En general, a medida que la amplitud del ruido aumenta sin cambiar la señal, el SNR disminuye, lo que genera una señal más ruidosa y menos legible. 
+Las gráficas muestran que al aumentar la amplitud del ruido, el SNR disminuye, lo que significa que la señal se vuelve menos distinguible. Con una amplitud baja de ruido, la señal sigue siendo reconocible y el SNR es mayor. Sin embargo, al amplificar el ruido, el SNR cae drásticamente, generando una señal más contaminada y difícil de interpretar. Esto refleja la importancia de minimizar el ruido en aplicaciones donde la precisión es fundamental, como en el procesamiento de señales fisiológicas.
 
 
 ---
@@ -274,18 +273,13 @@ plt.show()
 ```
 
 **Análisis Visual:**
+El código grafica la señal original junto con su versión afectada por ruido gaussiano, permitiendo visualizar cómo este ruido altera la forma de la señal.
 Las gráficas muestran cómo diferentes tipos de ruido afectan la forma de la señal, con el ruido de artefacto generando mayores distorsiones.
 
 ---
 
-## Resultado Esperado
-- Histogramas y estadísticas descriptivas.
-- Distribución de probabilidad de valores.
-- Gráficas de señales con diferentes tipos de ruido.
-- Cálculo de SNR para evaluar la calidad de la señal bajo ruido.
-
 ## Instrucciones
 1. Descargar la señal desde bases de datos como PhysioNet.
 2. Codificar y Ejecutar el código en un entorno Python.
-3. Subir este análisis a GitHub con el archivo `README.md` y las gráficas generadas como soporte visual.
+
 
