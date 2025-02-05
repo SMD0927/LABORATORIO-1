@@ -107,8 +107,8 @@ Se calculan los siguientes estadísticos:
 
 $$
 \mu = \frac{\sum x_i}{n}, \quad
-\sigma = \sqrt{\frac{\sum (x_i - \mu)^2}{n-1}}, \quad
-CV = \frac{\sigma}{\mu}
+s = \sqrt{\frac{\sum (x_i - \mu)^2}{n-1}}, \quad
+CV = \frac{s}{\mu}
 $$
 
 
