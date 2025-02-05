@@ -187,7 +187,7 @@ im = np.random.choice([0, 1], size=len(señal), p=[1-prob, prob])
 am = np.random.choice([-1, 1], size=len(señal)) * 0.4
 ruido5 = im * am
 ```
-#### 6.3. Ruido Tipo Artefacto
+#### 6.3. Ruido Tipo Artefacto 
 ```python
 prob_imp = 0.15
 impul = np.random.choice([0, 1], size=len(señal), p=[1-prob_imp, prob_imp])
@@ -196,7 +196,7 @@ ruido3 = impul * amplitud
 ```
 Este ruido representa alteraciones no deseadas en la señal causadas por errores en la adquisición, como movimientos del paciente o fallos en los electrodos. Es similar al ruido de impulso, pero con una mayor probabilidad de ocurrencia (prob_imp = 0.15). Se genera con la misma lógica de np.random.choice, agregando perturbaciones aleatorias.
 
-#### 6.3. Ruido Tipo Artefacto
+#### 6.3. Ruido Tipo Artefacto Amplificado
 ```python
 p = 0.2
 i = np.random.choice([0, 1], size=len(señal), p=[1-p, p])
