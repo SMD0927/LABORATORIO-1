@@ -206,6 +206,10 @@ def snr(s,r):
     <img src="https://github.com/user-attachments/assets/1f1d2a8e-0e72-49a7-9e39-701a1fda1e9f" alt="image" width="600">
 </p>
 
+<p align="center">
+    <img src="https://github.com/user-attachments/assets/924d3f6d-c0eb-4e05-a678-a451cb81b9d4" alt="image" width="600">
+</p>
+
 
 **Resultados SNR:**
 - **Ruido Gaussiano:** 10.369 dB
