@@ -202,9 +202,10 @@ def snr(s,r):
     snr = 10 * np.log10(potencia_señal/potencia_ruido) 
     return snr
 ```
-<center>
-    <img src="https://github.com/user-attachments/assets/1f1d2a8e-0e72-49a7-9e39-701a1fda1e9f" alt="image">
-</center>
+<p align="center">
+    <img src="https://github.com/user-attachments/assets/1f1d2a8e-0e72-49a7-9e39-701a1fda1e9f" alt="image" width="300">
+</p>
+
 
 **Resultados SNR:**
 - **Ruido Gaussiano:** 10.369 dB
