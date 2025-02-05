@@ -203,7 +203,7 @@ def snr(s,r):
     return snr
 ```
 <p align="center">
-    <img src="https://github.com/user-attachments/assets/1f1d2a8e-0e72-49a7-9e39-701a1fda1e9f" alt="image" width="300">
+    <img src="https://github.com/user-attachments/assets/1f1d2a8e-0e72-49a7-9e39-701a1fda1e9f" alt="image" width="400">
 </p>
 
 
