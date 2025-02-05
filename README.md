@@ -211,6 +211,7 @@ def snr(s,r):
     snr = 10 * np.log10(potencia_señal/potencia_ruido) 
     return snr
 ```
+**Señaes con Ruido**
 <p align="center">
     <img src="https://github.com/user-attachments/assets/1f1d2a8e-0e72-49a7-9e39-701a1fda1e9f" alt="image" width="500">
 </p>
@@ -220,6 +221,7 @@ def snr(s,r):
 <p align="center">
     <img src="https://github.com/user-attachments/assets/6ed6d849-933b-41c5-8693-b9a34e554b67" alt="image" width="500">
 </p>
+**Señaes con Ruido Amplificado**
 <p align="center">
     <img src="https://github.com/user-attachments/assets/924d3f6d-c0eb-4e05-a678-a451cb81b9d4" alt="image" width="500">
 </p>
@@ -238,9 +240,9 @@ def snr(s,r):
 
 
 **Resultados SNR:**
-- **Ruido Gaussiano:** 10.369 dB
-- **Ruido Impulso:** 7.09 dB
-- **Ruido Artefacto:** 4.092 dB
+- **Ruido Gaussiano:** 10.419 dB
+- **Ruido Impulso:** 7.274 dB
+- **Ruido Artefacto:** 4.066 dB
 
 **Análisis:**
 El SNR más alto indica que la señal es más resistente al ruido gaussiano en comparación con el ruido de impulso o artefactos.
