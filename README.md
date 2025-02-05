@@ -169,15 +169,19 @@ Se añade ruido con distribución normal para simular interferencias aleatorias.
 
 #### 6.2. Ruido de Impulso
 ```python
-impulsos = np.random.choice([0, 1], size=t, p=[0.9, 0.1])
-ruido_impulso = impulsos * np.random.uniform(-0.8, 0.8, t)
+prob_impulso = 0.08
+impulsos = np.random.choice([0, 1], size=len(señal), p=[1-prob_impulso, prob_impulso])
+amplitud_impulso = np.random.choice([-1, 1], size=len(señal)) * 0.2
+ruido2 = impulsos * amplitud_impulso
 ```
 Se introducen pulsos aleatorios para simular eventos transitorios abruptos.
 
 #### 6.3. Ruido Tipo Artefacto
 ```python
-artefactos = np.random.choice([0, 1], size=t, p=[0.95, 0.05])
-ruido_artefacto = artefactos * np.random.normal(5 * np.std(señal), 0.5, t)
+prob_imp = 0.15
+impul = np.random.choice([0, 1], size=len(señal), p=[1-prob_imp, prob_imp])
+amplitud = np.random.choice([-1, 1], size=len(señal)) * 0.2
+ruido3 = impul * amplitud
 ```
 Se simulan eventos anómalos de alta amplitud.
 
