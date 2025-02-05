@@ -2,7 +2,7 @@
 Análisis Estadístico de Señales Fisiológicas
 # Análisis Estadístico de la Señal
 
-Este proyecto realiza un análisis detallado de una señal fisiológica (ECG) utilizando técnicas estadísticas descriptivas y modelos de ruido, con el objetivo de evaluar características esenciales de la señal y los efectos del ruido en su comportamiento. Se analizan estadísticos básicos, distribuciones de probabilidad y la resistencia de la señal frente a diferentes tipos de ruido, evaluando su relación señal-ruido (SNR).
+En este laboratorio exploramos señales fisiológicas de ECG utilizando técnicas de estadística descriptiva y modelos de ruido. El objetivo es entender tanto las características propias de la señal como el impacto del ruido, analizando aspectos como la relación señal-ruido (SNR).
 
 ## Requisitos
 - **Python 3.9**
@@ -28,7 +28,7 @@ datos = wfdb.rdrecord('rec_2')
 t = 2000
 señal = datos.p_signal[:t, 0]
 ```
-Se utiliza `wfdb.rdrecord` para cargar una señal fisiológica (ECG) desde un archivo estándar en formato WFDB. En este caso, se seleccionan los primeros 2000 puntos de la señal. Este paso inicial permite trabajar con un subconjunto significativo de datos para realizar análisis detallados.
+Se utiliza `wfdb.rdrecord` para cargar una señal fisiológica (ECG) desde un archivo estándar en formato WFDB que fueron descargados en PhysioNet. En este caso, se seleccionan los primeros 2000 puntos de la señal. Este paso inicial permite trabajar con un subconjunto significativo de datos para realizar análisis detallados.
 
 ---
 
@@ -48,12 +48,7 @@ plt.show()
     <img src="https://i.postimg.cc/50qyPvY9/histograma.png" alt="histograma" width="450">
 </p>
 
-Se genera un histograma que describe la distribución de los valores de la señal:
-- **Frecuencia Absoluta:** La cantidad de veces que aparecen los valores dentro de cada rango.
-- **Densidad de Probabilidad (KDE):** Representa de forma suavizada cómo se distribuyen los datos.
-
-**Análisis:**
-El histograma revela que los valores de la señal están centrados alrededor de la media y decrecen hacia los extremos. Esto es típico de señales fisiológicas donde la actividad normal se mantiene en un rango definido.
+El histograma muestra una distribución asimétrica con mayor concentración de valores cerca de 0 y una cola extendida a la derecha, indicando un sesgo positivo. Esto sugiere la posible presencia de ruido o eventos atípicos en la señal, aunque la mayoría de los valores se mantienen dentro de un rango fisiológico típico.
 
 ---
 
@@ -73,13 +68,7 @@ plt.show()
 </p>
 
 
-La gráfica muestra la variación de la señal ECG en el tiempo:
-- **Patrones Visuales:** Se pueden observar las ondas características (P, QRS, T) típicas de un ECG.
-- **Amplitud:** Indica la intensidad de las variaciones del voltaje.
-
-**Análisis:**
-Esta gráfica ayuda a identificar irregularidades o anomalías que podrían ser indicativas de problemas cardiacos.
-
+La gráfica muestra la señal ECG en función del tiempo, donde se pueden ver claramente las ondas características (P, QRS y T) y cómo varía el voltaje. Se aprecia un patrón cíclico que indica una actividad cardíaca regular, aunque también se observa algo de ruido en la línea base, lo que podría deberse a interferencias en la toma de datos.
 ---
 
 ### 4. Estadísticos Descriptivos
@@ -87,20 +76,18 @@ Esta gráfica ayuda a identificar irregularidades o anomalías que podrían ser 
 #### 4.1. Cálculo Manual
 ```python
 def estadisticos_programados():
-    print('estadísticos descriptivos, forma larga;')
     suma = 0
     for v in señal:
-       suma += v    
-    media = suma/t
-    print('media:', round(media,4))
-    suma2 = 0
-    for u in señal:
-        suma2 += ((u-media)**2)
-    desvesta = (suma2/(t-1))**0.5
-    print("desviacion estadar:", round(desvesta,3))
-    coeficiente = desvesta/media
-    print('coeficente de variacion', abs(round(coeficiente,3)))
-    print()
+        suma += v    
+    media = suma / t
+    suma2 = sum((u - media)**2 for u in señal)
+    desvesta = (suma2 / (t - 1))**0.5
+    coeficiente = desvesta / abs(media)
+    print('media:', media)
+    print("desviacion estandar:", desvesta)
+    print('coeficente de variacion', coeficiente)
+
+estadisticos_programados()
 ```
 Se calculan los siguientes estadísticos:
 - **Media (μ):** Valor promedio de la señal.
@@ -109,39 +96,40 @@ Se calculan los siguientes estadísticos:
 
 $$
 \mu = \frac{\sum x_i}{n}, \quad
-s = \sqrt{\frac{\sum (x_i - \mu)^2}{n-1}}, \quad
-CV = \frac{s}{\mu}
+\sigma = \sqrt{\frac{\sum (x_i - \mu)^2}{n-1}}, \quad
+CV = \frac{\sigma}{\mu}
 $$
 
 
 **Resultados:**
 - Media: -0.0124
 - Desviación estándar: 0.131
-- Coeficiente de variación: -10.557
+- Coeficiente de variación: 10.557
 
 **Interpretación:**
 La media cercana a cero indica una señal centrada, mientras que el coeficiente de variación muestra una variabilidad moderada.
 
 #### 4.2. Usando Funciones de NumPy
 ```python
-def estadisticos():
-    print('estadísticos descriptivos, funciones predeterminadas;')
+def estadisticos_Bibliotecas():
     media = np.mean(señal)
-    desvesta = np.std(señal)
-    coeficiente = desvesta/media
-    print('media:', round(media,3))
-    print("desviacion estadar:", round(desvesta,3))
-    print('coeficente de variacion',abs(round(coeficiente,3)))
+    desvesta = np.std(señal, ddof=1)
+    coeficiente = desvesta /abs(media)
+    print('Media:', media)
+    print("Desviación estándar:", desvesta)
+    print('Coeficiente de variación:', coeficiente)
+
+estadisticos_Bibliotecas()
 ```
 Se obtienen los mismos resultados de manera más eficiente utilizando NumPy.
 
 **Resultados:**
 - Media: -0.012
 - Desviación estándar: 0.131
-- Coeficiente de variación: -10.554
+- Coeficiente de variación: 10.554
 
 ---
-
+En esta sección se calculan estadísticas básicas de la señal de dos formas: de manera manual y usando NumPy. Ambas aproximaciones generan resultados muy similares: una media cercana a cero (-0.0124 o -0.012) lo que coincide con el histograma que revela una concentración de valores alrededor de este punto ,y una desviación estándar de 0.131, lo que indica que la señal está centrada y presenta una dispersión moderada. El coeficiente de variación, cercano a 10.55, lo que refleja una variabilidad relativa en la señal.
 ### 5. Función de Probabilidad
 ```python
 def calcular_funcion_probabilidad(senal):
@@ -175,7 +163,7 @@ La mayoría de los valores tienen baja probabilidad individual, lo que refleja l
 ruido = np.random.normal(0, 0.1, t)
 señal_ruidosa = señal + ruido
 ```
-Es un tipo de ruido aleatorio cuyas variaciones siguen una distribución normal o gaussiana. Se caracteriza por tener una media de valor cero y una desviación estándar que define su intensidad.
+El ruido gaussiano es un tipo de ruido aleatorio cuyas variaciones siguen una distribución normal. Se define por su media (0 en este caso) y su desviación estándar (0.1, que controla su intensidad). Es común en señales fisiológicas debido a la electrónica del sistema de adquisición y otras fuentes de interferencia aleatoria.
 
 #### 6.2. Ruido de Impulso
 ```python
@@ -184,7 +172,7 @@ impulsos = np.random.choice([0, 1], size=len(señal), p=[1-prob_impulso, prob_im
 amplitud_impulso = np.random.choice([-1, 1], size=len(señal)) * 0.2
 ruido2 = impulsos * amplitud_impulso
 ```
-Es un tipo de ruido caracterizado por la aparición de picos de alta intensidad en una señal. Estos picos ocurren de manera esporádica y pueden alterar significativamente la información original
+Este ruido se caracteriza por picos abruptos y esporádicos en la señal, generados aquí con una probabilidad del 8% (prob_impulso = 0.08). La función np.random.choice determina en qué puntos aparecen los impulsos (1 o 0), y la amplitud se asigna aleatoriamente con valores de ±0.2. Este ruido suele deberse a interferencias externas o fallos en la transmisión de datos.
 
 #### 6.3. Ruido Tipo Artefacto
 ```python
@@ -193,8 +181,7 @@ impul = np.random.choice([0, 1], size=len(señal), p=[1-prob_imp, prob_imp])
 amplitud = np.random.choice([-1, 1], size=len(señal)) * 0.2
 ruido3 = impul * amplitud
 ```
-Se refiere a cualquier distorsión no deseada que aparece en una señal debido a errores en su adquisición, procesamiento o transmisión.
-
+Este ruido representa alteraciones no deseadas en la señal causadas por errores en la adquisición, como movimientos del paciente o fallos en los electrodos. Es similar al ruido de impulso, pero con una mayor probabilidad de ocurrencia (prob_imp = 0.15). Se genera con la misma lógica de np.random.choice, agregando perturbaciones aleatorias.
 #### Cálculo del SNR
 El SNR o la Relación Señal-Ruido es una medida que compara el nivel de la señal útil con el nivel del ruido no deseado. En otras palabras, es una forma de medir qué tan clara es una señal en comparación con el ruido que la acompaña. Un SNR alto significa que la señal es mucho más fuerte que el ruido, lo que generalmente resulta en una mejor calidad de la señal. Por otro lado, un SNR bajo indica que el ruido predomina sobre la señal, lo que puede causar distorsión o errores.
 
