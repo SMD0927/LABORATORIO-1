@@ -187,11 +187,14 @@ $$
 $$
 
 ```python
-def snr_gaussiano(s, r):
-    snr = 10 * np.log10(np.mean(s**2) / np.mean(r**2))
+def snr(s,r):
+    potencia_señal = np.mean(s**2)
+    potencia_ruido = np.mean(r**2)
+    
+    if potencia_ruido == 0:
+        return np.inf
+    snr = 10 * np.log10(potencia_señal/potencia_ruido) 
     return snr
-
-print('SNR con ruido gaussiano:', round(snr_gaussiano(señal, ruido), 3), 'dB')
 ```
 **Resultados SNR:**
 - **Ruido Gaussiano:** 10.369 dB
