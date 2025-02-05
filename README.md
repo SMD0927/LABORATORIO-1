@@ -205,10 +205,17 @@ def snr(s,r):
 <p align="center">
     <img src="https://github.com/user-attachments/assets/1f1d2a8e-0e72-49a7-9e39-701a1fda1e9f" alt="image" width="600">
 </p>
-
 <p align="center">
     <img src="https://github.com/user-attachments/assets/924d3f6d-c0eb-4e05-a678-a451cb81b9d4" alt="image" width="600">
 </p>
+<p align="center">
+    <img src="https://github.com/user-attachments/assets/776a5151-430b-4e1d-b91e-a53ff1d90979" alt="image" width="600">
+</p>
+<p align="center">
+    <img src="https://github.com/user-attachments/assets/1183d8bd-2dd4-40ef-93bb-302e7420e4d9" alt="image" width="600">
+</p>
+
+
 
 
 **Resultados SNR:**
