@@ -1,6 +1,6 @@
 # LABORATORIO-1
 Análisis Estadístico de Señales Fisiológicas
-# Análisis Estadístico de Señales Fisiológicas
+# Análisis Estadístico de la Señal
 
 Este proyecto realiza un análisis detallado de una señal fisiológica (ECG) utilizando técnicas estadísticas descriptivas y modelos de ruido, con el objetivo de evaluar características esenciales de la señal y los efectos del ruido en su comportamiento. Se analizan estadísticos básicos, distribuciones de probabilidad y la resistencia de la señal frente a diferentes tipos de ruido, evaluando su relación señal-ruido (SNR).
 
